@@ -1,8 +1,9 @@
+
 import java.util.List;
 import java.util.Map;
 
 public class Shop {
-    static List<Goods> goodsList ;
+    static List<Product> products ;
 
     static void fillShop(){
 
@@ -10,7 +11,7 @@ public class Shop {
 
     static double calculateTotalCost( String str) {
         double result = 0;
-        char[] names = getGoodsNames(str);
+        char[] names = getProductsNames(str);
         Map<String, Integer> products = getProductQuantity(names);
         for (Map.Entry<String, Integer> entry : products.entrySet()) {
             result += getProductCost(entry.getKey(), entry.getValue());
@@ -26,7 +27,7 @@ public class Shop {
 
     }
 
-    static char[] getGoodsNames(String str) {
+    static char[] getProductsNames(String str) {
         return str.toCharArray();
     }
 }
