@@ -8,8 +8,15 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+//all tests fail with java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 1 exception
 class AppServiceTest {
+
+    //you have BaseStockService as internal dependency in AppService
+    //we have to use Mockito to Mock the dependency
+    //here is simple example how to use Mockito https://pastebin.com/1zSjHTC2
     private AppService appService;
+
+    //you also use the singleton pattern, you have to test it
 
 
 
@@ -33,6 +40,8 @@ class AppServiceTest {
         correctValue.put("ABCD321", 7.25);
         correctValue.put("A ♦ B_C D*/-", 7.25);
 
+        //It's not a best practice to have a lot of different cases
+        //you can extract it at least singleProduct and multipleProduct
         correctValue.forEach((key, value) ->
                 Assertions.assertEquals(correctValue.get(key), appService.calculateFoodBasketCost(key)));
     }
@@ -40,6 +49,7 @@ class AppServiceTest {
 
     @Test
     void testCorrectMethodWorkDoOptimization() {
+        //I suggest extract the preparing data in extra private method, to do the test more readable
         Map<String, Map<String, Integer>> correctValue = new HashMap<>();
         correctValue.put("ABCD",
                 Map.of("A", 1,

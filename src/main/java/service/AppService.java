@@ -46,6 +46,7 @@ public class AppService {
         double costWithoutPromotion;
         double costWithPromotion;
         if (tempProduct.hasPromotion()) {
+
             costWithPromotion = (double) (oneTypeProductCount / tempProduct.getPromotion()) * tempProduct.getPromotionPrice();
             costWithoutPromotion = (oneTypeProductCount % tempProduct.getPromotion()) * tempProduct.getPrice();
         } else {

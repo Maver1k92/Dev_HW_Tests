@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public final class BaseStockService {
+
     private static BaseStockService baseConnect;
 
     private final Map<String, Product> productList = new HashMap<>();
@@ -40,6 +41,7 @@ public final class BaseStockService {
         return productList;
     }
 
+    // we are using the methods only in the class so we can use the private access type
     public Product checkProduct (String scannerLine){
         String[] splitLine = scannerLine.replaceAll(",+", ".").split("\\\\");
         return deserializeProduct(splitLine);

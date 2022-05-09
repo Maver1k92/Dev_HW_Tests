@@ -13,6 +13,7 @@ public class Product {
     private int promotion;
     private double promotionPrice;
 
+    //promotion and promotionPrice will be 0 by default, we don't need init it in the  constructor
     public Product(String name, double price) {
         this(name, price, 0, 0);
     }
