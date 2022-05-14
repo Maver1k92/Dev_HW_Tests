@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a46d96c6-48b1-428e-a29c-ced8be43e7f1" name="Changes" comment="Refactroing in Main" />
+    <list default="true" id="a46d96c6-48b1-428e-a29c-ced8be43e7f1" name="Changes" comment="Add ProductTest">
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/AppServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/AppServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652520805419</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactroing in Main">
+      <created>1652520818199</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652520818199</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add ProductTest">
+      <created>1652520949135</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652520949135</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +181,7 @@
     <MESSAGE value="Change product" />
     <MESSAGE value="Add util&#10;Fix service" />
     <MESSAGE value="Refactroing in Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactroing in Main" />
+    <MESSAGE value="Add ProductTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ProductTest" />
   </component>
 </project>
