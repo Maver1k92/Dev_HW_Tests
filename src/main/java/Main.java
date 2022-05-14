@@ -1,11 +1,18 @@
 import service.AppService;
+import service.BaseStockService;
+import util.ResourcesImpl;
 
 public class Main {
+
+    public static AppService app = new AppService(new BaseStockService(new ResourcesImpl("Stock.txt")));
+
     public static void main(String[] args) {
-        AppService app = new AppService();
-        System.out.println(app.calculateFoodBasketCost("ABCDABA"));
+        app.printFoodBasketCost("ABCD");
         app.printFoodBasketCost("ABCDABA");
-        System.out.println(app.calculateFoodBasketCost("A BC  DAB A"));
         app.printFoodBasketCost("ABCDA34BA");
+        app.printFoodBasketCost("");
+        app.printFoodBasketCost(null);
+
+
     }
 }
