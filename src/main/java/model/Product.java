@@ -1,4 +1,3 @@
-
 package model;
 
 import lombok.AccessLevel;
@@ -13,7 +12,6 @@ public class Product {
     private int promotion;
     private double promotionPrice;
 
-    //promotion and promotionPrice will be 0 by default, we don't need init it in the  constructor
     public Product(String name, double price) {
         this(name, price, 0, 0);
     }
@@ -29,5 +27,17 @@ public class Product {
         return this.promotion != 0;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+
+        Product product = (Product) o;
+
+        if (Double.compare(product.price, price) != 0) return false;
+        if (promotion != product.promotion) return false;
+        if (Double.compare(product.promotionPrice, promotionPrice) != 0) return false;
+        return name.equals(product.name);
+    }
 
 }
