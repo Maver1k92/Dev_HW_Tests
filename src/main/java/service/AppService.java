@@ -1,29 +1,34 @@
+
 package service;
 
-import lombok.NoArgsConstructor;
 import model.Product;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@NoArgsConstructor
 public class AppService {
-    private final Map<String, Product> allProducts = BaseStockService.getInstance().getBasePrices("Stock.txt");
+    private final BaseStockService actualStockBaseService;
     private double cost = 0.0;
+
+    public AppService(BaseStockService actualStockBaseService){
+        this.actualStockBaseService = actualStockBaseService;
+    }
 
     public void printFoodBasketCost (String basket){
         System.out.println("Cost of \""
                 + basket
                 + "\" = "
-                + calculateFoodBasketCost(basket));
+                + calculateTotalCost(basket));
     }
 
-
-
-    public double calculateFoodBasketCost(String basket) {
+    public double calculateTotalCost(String basket) {
         cost = 0.0;
+        //please ALWAYS use {} with if and for statements even with one line
+        if (basket == null || basket.isEmpty()) return 0.0;
+
         Map<String, Integer> optimizeFoodBasket = doOptimization(basket);
-        optimizeFoodBasket.forEach((key, value) -> cost += costOfOneTypeProductInBasket(key, value, allProducts));
+        Map<String, Product> actualStockBase = actualStockBaseService.getBasePrices();
+        optimizeFoodBasket.forEach((key, value) -> cost += costOfOneTypeProductInBasket(key, value, actualStockBase));
         return cost;
     }
 
@@ -41,12 +46,12 @@ public class AppService {
         return tempMap;
     }
 
-    public double costOfOneTypeProductInBasket(String oneTypeProductName, int oneTypeProductCount, Map<String, Product> allProducts) {
-        Product tempProduct = allProducts.get(oneTypeProductName);
+    //the name of a method should be a verb
+    public double costOfOneTypeProductInBasket(String oneTypeProductName, int oneTypeProductCount, Map<String, Product> actualStockBase) {
+        Product tempProduct = actualStockBase.get(oneTypeProductName);
         double costWithoutPromotion;
         double costWithPromotion;
         if (tempProduct.hasPromotion()) {
-
             costWithPromotion = (double) (oneTypeProductCount / tempProduct.getPromotion()) * tempProduct.getPromotionPrice();
             costWithoutPromotion = (oneTypeProductCount % tempProduct.getPromotion()) * tempProduct.getPrice();
         } else {
